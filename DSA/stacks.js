@@ -30,25 +30,21 @@ class Stack {
         this.count--;
         let result = this.storage[this.count];
         delete this.storage[this.count];
-        console.log(result);
+        return result;
     }
     // Returns the size of the stack
     length() {
-        console.log(this.count);
+        return this.count;
     }
     // Returns the value at the end of the stack
     peek() {
-        console.log(this.storage[this.count - 1]);
+        return this.storage[this.count - 1]
   }
 }
 
 
 var myStack = new Stack();
 
-myStack.push("1");
-myStack.push("2");
-myStack.peek();
-myStack.push("3");
-myStack.length();
-myStack.pop();
-myStack.length();
+myStack.push("5")
+console.log(myStack.pop())
+console.log(myStack.length())

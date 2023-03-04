@@ -1,9 +1,15 @@
+// node represent each slot of memory
+// each node will have its value (data) and the reference to the next slot
 class Node {
   constructor(data, next = null) {
     this.data = data;
     this.next = next;
   }
 }
+
+// linkedlist is a 'style' ( or shape) of how nodes are connected
+// linkedlist is connected one node to another in one long linear line
+// it could turn into a double link or even a circle where tail refers back to the head
 
 class LinkedList {
   constructor() {

@@ -25,7 +25,7 @@ class Set {
     // removes the element
     remove(el){
         if(this.has(el)){
-            index = this.collection.indexOf(el);
+            let index = this.collection.indexOf(el);
             this.collection.splice(index, 1);
             return true;
         }
@@ -84,6 +84,8 @@ secondSet.add("Hello")
 secondSet.add("Sherman")
 console.log(firstSet.values())
 console.log(secondSet.values());
-console.log(firstSet.union(secondSet.values()))
-console.log(firstSet.difference(secondSet.values()));
-console.log(firstSet.subset(secondSet.values()));
+secondSet.remove("Hello")
+console.log(secondSet.values());
+// console.log(firstSet.union(secondSet.values()))
+// console.log(firstSet.difference(secondSet.values()));
+// console.log(firstSet.subset(secondSet.values()));

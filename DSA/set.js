@@ -38,10 +38,10 @@ class Set {
     // returns the union of two sets
     union(otherSet){
       let unionSet = new Set();
-      otherSet.forEach((e) => {
+      this.collection.forEach((e) => {
         unionSet.add(e);
       });
-      this.collection.forEach((e) => {
+      otherSet.forEach((e) => {
         unionSet.add(e);
       });
       return unionSet.values();
@@ -75,11 +75,15 @@ class Set {
     }
 }
 
-let mySet = new Set();
-mySet.add("1")
-mySet.add("2");
-mySet.add("3");
-console.log(mySet.values())
-console.log(mySet.intersection(["3"]))
-console.log(mySet.difference(["5", "1"]));
-console.log(mySet.subset(["1", "4", "5"]))
+let firstSet = new Set();
+let secondSet = new Set();
+
+firstSet.add("Hello")
+firstSet.add("world")
+secondSet.add("Hello")
+secondSet.add("Sherman")
+console.log(firstSet.values())
+console.log(secondSet.values());
+console.log(firstSet.union(secondSet.values()))
+console.log(firstSet.difference(secondSet.values()));
+console.log(firstSet.subset(secondSet.values()));

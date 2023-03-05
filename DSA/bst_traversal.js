@@ -120,8 +120,98 @@ class BST {
     this.root = removeNode(this.root, data);
   }
   //finding the minimum height of the tree
-  findMinHeight(){
-
+  findMinHeight(node = this.root){
+    if(node === null){
+        return -1;
+    };
+    let left = this.findMinHeight(node.left)
+    let right = this.findMinHeight(node.right);
+    if(left < right){
+        return left + 1;
+    }else{
+        return right + 1;
+    }
+  }
+  findMaxHeight(node = this.root){
+      if(node === null){
+          return -1;
+      }
+    let left = this.findMaxHeight(node.left);
+    let right = this.findMaxHeight(node.right);
+    if(left > right){
+        return left + 1;
+    }else{
+        return right + 1;
+    }
+  }
+  isBalanced(){
+      return (this.findMinHeight() >= this.findMaxHeight() -1);
+  }
+  //travel to the deepest left and work to the right
+  inOrder(){
+      if(this.root === null){
+          return null;
+      }else{
+          let result = [];
+          function traverseInOrder(node){
+              node.left && traverseInOrder(node.left);
+              result.push(node.data);
+              node.right && traverseInOrder(node.right);
+          }
+          traverseInOrder(this.root);
+          return result;
+      }
+  }
+  //work by pushing left and then to the right. not necessarily in order
+  preOrder(){
+      if(this.root === null){
+          return null;
+      }else{
+          let result = [];
+          function traversePreOrder(node){
+              result.push(node.data);
+              node.left && traversePreOrder(node.left);
+              node.right && traversePreOrder(node.right);
+          }
+          traversePreOrder(this.root);
+          return result;
+      }
+  }
+  //deepest to the root
+  portOrder(){
+      if(this.root === null){
+          return null;
+      }else{
+          let result = [];
+          function traversePostOrder(node){
+              node.left && traversePostOrder(node.left);
+              node.right && traversePostOrder(node.right);
+              result.push(node.data)
+          };
+          traversePostOrder(this.root);
+          return result;
+      }
+  }
+  //breadthfirstsearch method!
+  levelOrder(){
+      let result = [];
+      let q = [];
+      if(this.root != null){
+          q.push(this.root);
+          while(q.length > 0){
+              let node = q.shift();
+              result.push(node.data);
+              if(node.left != null){
+                  q.push(node.left);
+              }
+              if(node.right != null){
+                  q.push(node.right)
+              };
+          };
+          return result;
+      }else{
+          return null;
+      }
   }
 }
 
@@ -135,4 +225,10 @@ bst.add(22);
 bst.add(5);
 bst.add(7);
 bst.add(20);
-bst.add(10);
+// bst.add(10);
+
+console.log(bst.findMaxHeight());
+console.log(bst.findMinHeight());
+console.log(bst.inOrder());
+console.log(bst.preOrder());
+console.log(bst.portOrder());
